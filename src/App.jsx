@@ -1,6 +1,7 @@
-import './App.css'
 import RenderUser from './components/RenderUser'
+import Title from './components/Title/Title'
 import UserList from './components/UserList'
+import Wrapper from './components/Wrapper/Wrapper'
 
 const users = [
   {
@@ -23,7 +24,22 @@ const users = [
 function App() {
   return (
     <>
+      <Title color='red'>Content TITLE</Title>
+      <Title>Content TITLE</Title>
+      <Title>Content TITLE</Title>
+      <Title>Content TITLE</Title>
+      <Title>Content TITLE</Title>
       <UserList users={users} />
+      <Wrapper>Content 1</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
+      <Wrapper>Content 2</Wrapper>
     </>
   )
 }

@@ -1,0 +1,13 @@
+.container {
+  background-color: red;
+}
+
+.selector1 {
+  border: 2px solid white;
+  /* composes: container; */
+}
+
+.selector2 {
+  border: 2px solid white;
+  /* composes: container; */
+}

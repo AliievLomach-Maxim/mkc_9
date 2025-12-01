@@ -1,5 +1,8 @@
 # Module-01
 
+<details>
+<summary>Module-01</summary>
+
 ## Less-01
 
 - Знайомство
@@ -42,3 +45,31 @@
 - Нормалізація стилів `modern-normalize`
 - Білбліотека React Icons
 - `https://icomoon.io/`
+
+</details>
+<br/>
+<br/>
+
+# Module-02
+
+<details>
+  <summary>Заняття 1</summary>
+<ul>
+    <li>Обробка подій</li>
+    <ul>
+        <li>Посилання на ф-ю</li>
+        <li>Анонімний колбек</li>
+        <li>Обʼєкт події</li>
+    </ul>
+    <li>Стан компонента</li>
+    <ul>
+        <li>Рективність</li>
+        <li>useState</li>
+        <li>Асинхронність оновлення стану</li>
+        <li>Ізоляція стану</li>
+        <li>Підняття стану</li>
+        <li>Декілька станів</li>
+        <li>Оновлення обʼєктів</li>
+    </ul>
+</ul>
+</details>

@@ -1,45 +1,32 @@
-import RenderUser from './components/RenderUser'
-import Title from './components/Title/Title'
-import UserList from './components/UserList'
-import Wrapper from './components/Wrapper/Wrapper'
-
-const users = [
-  {
-    id: '1',
-    name: 'Alex',
-    age: 42,
-  },
-  {
-    id: '2',
-    name: 'John',
-    age: 42,
-  },
-  {
-    id: '3',
-    name: 'Bob',
-    age: 42,
-  },
-]
+import { useState } from 'react'
+import Card from './components/Card/Card'
+import Clicker from './components/Clicker/Clicker'
 
 function App() {
+  // const [value, setValue] = useState(0)
+  // const handleClick = () => {
+  //   setValue(value + 1)
+  // }
+  const [value, setValue] = useState({
+    value1: 0,
+    value2: 0,
+  })
+
+  const handleClick = (stateKey) => {
+    setValue({
+      ...value,
+      [stateKey]: value[stateKey] + 1,
+    })
+  }
+
+  const total = value.value1 + value.value2
   return (
     <>
-      <Title color='red'>Content TITLE</Title>
-      <Title>Content TITLE</Title>
-      <Title>Content TITLE</Title>
-      <Title>Content TITLE</Title>
-      <Title>Content TITLE</Title>
-      <UserList users={users} />
-      <Wrapper>Content 1</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
-      <Wrapper>Content 2</Wrapper>
+      <Clicker value={value.value1} handleClick={() => handleClick('value1')} />
+      <hr />
+      <h1>Total: {total}</h1>
+      <hr />
+      <Clicker value={value.value2} handleClick={() => handleClick('value2')} />
     </>
   )
 }

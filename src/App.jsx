@@ -1,53 +1,47 @@
-import { useEffect, useState } from 'react'
-import Timer from './components/Timer/Timer'
-
-const initialState = () => {
-  const local = localStorage.getItem('counter')
-  if (local) {
-    const value = JSON.parse(local)
-    return value
-  }
-  return 0
-}
+import ControlForm from './components/ControlForm/ControlForm'
 
 const App = () => {
-  const [counter, setCounter] = useState(initialState)
-
-  useEffect(() => {
-    localStorage.setItem('counter', counter)
-  }, [counter])
-
+  const createUser = (newUser) => {
+    const recreatedUser = { ...newUser, phone: '123' }
+    console.log('recreatedUser', recreatedUser)
+  }
   return (
     <div>
-      <button onClick={() => setCounter(counter + 1)}>Clicker {counter}</button>
-      {/* <button onClick={() => setCounter2(counter2 + 1)}>Clicker 2 {counter2}</button> */}
-      {/* <button onClick={() => setIsShow(!isShow)}>{isShow ? 'Hide' : 'Show'} Timer </button>
-      {isShow && <Timer />} */}
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
+      <ControlForm handleCreate={createUser} />
     </div>
   )
 }
 
 export default App
+// import { useState } from 'react'
+// import Form from './components/Form/Form'
+// import FormItem from './components/FormItem/FormItem'
 
-// every update component
-// useEffect(() => {
-//   console.log('Effect')
-// })
+// const App = () => {
+//   const [value, setValue] = useState('en')
 
-// only mounting
-// useEffect(() => {
-//   console.log('Effect')
-// }, [])
+//   const createUser = (newUser) => {
+//     const recreatedUser = { ...newUser, phone: '123' }
+//     console.log('recreatedUser', recreatedUser)
+//   }
+//   return (
+//     <div>
+//       <FormItem handleChangeLang={setValue} lang={value} />
+//       <br />
+//       <h1>{value === 'ua' ? 'Форма' : 'Form'}</h1>
+//       <Form handleCreate={createUser} />
+//       <br />
+//       <h1>Form 2</h1>
+//       <Form handleCreate={createUser} />
+//       <br />
+//     </div>
+//   )
+// }
 
-// // only mounting & every update state "counter"
-// useEffect(() => {
-//   // if (!counter) return // for skip first render
-//   console.log('Effect',counter)
-// }, [counter])
-
-// useEffect(() => {
-//   console.log('counter', counter)
-// }, [counter])
-// useEffect(() => {
-//   console.log('counter2', counter2)
-// }, [counter2])
+// export default App

@@ -1,4 +1,5 @@
 import ControlForm from './components/ControlForm/ControlForm'
+import FormikForm from './components/FormikForm/FormikForm'
 
 const App = () => {
   const createUser = (newUser) => {
@@ -6,14 +7,9 @@ const App = () => {
     console.log('recreatedUser', recreatedUser)
   }
   return (
-    <div>
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
-      <ControlForm handleCreate={createUser} />
+    <div className='Main'>
+      {/* <ControlForm handleCreate={createUser} /> */}
+      <FormikForm handleCreate={createUser} />
     </div>
   )
 }

@@ -1,18 +1,15 @@
-import { useSomeContext } from '../../context/someContext'
-import Card2 from '../Card2/Card2'
+import Card3 from '../Card3/Card3'
 
-const Card = () => {
-  const { defaultValue } = useSomeContext()
+const Card2 = () => {
   return (
     <div>
-      <Card2 />
-      Card:
-      <h2>value:{defaultValue}</h2>
+      Card2
+      <Card3 />
     </div>
   )
 }
 
-export default Card
+export default Card2
 
 // const handleCLick = (event)=>{}
 // const button = document.querySelector('button')

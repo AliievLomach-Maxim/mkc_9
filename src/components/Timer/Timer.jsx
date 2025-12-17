@@ -1,17 +1,30 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const Timer = () => {
+  const [counter, setCounter] = useState(0)
+  const idRef = useRef()
   useEffect(() => {
-    const id = setInterval(() => {
+    idRef.current = setInterval(() => {
       console.log('interval', Date.now())
     }, 1000)
     // unmounting >>>
     return () => {
-      clearInterval(id)
+      clearInterval(idRef.current)
     }
   }, [])
 
-  return <div>Timer</div>
+  const handleClick = () => {
+    console.log('idRef.current', idRef.current)
+    clearInterval(idRef.current)
+  }
+
+  return (
+    <div>
+      <h1>Timer</h1>
+      <button onClick={handleClick}>Clear timer</button>
+      <button onClick={() => setCounter(counter + 1)}>{counter}</button>
+    </div>
+  )
 }
 
 export default Timer

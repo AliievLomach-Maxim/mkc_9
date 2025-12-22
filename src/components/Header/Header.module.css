@@ -1,0 +1,13 @@
+.active {
+  color: red;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  flex-direction: row;
+  li {
+    list-style-type: none;
+  }
+}

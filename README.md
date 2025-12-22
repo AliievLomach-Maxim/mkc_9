@@ -206,3 +206,18 @@
 </details>
 <br/>
 <br/>
+
+# Module-05
+
+<details>
+  <summary>Заняття 1</summary>
+<ul>
+    <li>Маршрутизація</li>
+    <li>Компонент <code>BrowserRouter</code></li>
+    <li>Компоненти <code>Route</code> та <code>Routes</code></li>
+    <li>Сторінка помилки навігації</li>
+    <li>Компоненти <code>Link</code> та <code>NavLink</code></li>
+    <li>URL_апраметри з <code>useParams</code></li>
+    <li>Вкладені маршрути та <code>Outlet</code></li>
+</ul>
+</details>

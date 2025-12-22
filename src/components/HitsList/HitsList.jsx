@@ -1,9 +1,11 @@
+import { Link } from 'react-router'
+
 const HitsList = ({ items }) => {
   return (
     <ul>
       {items.map((el) => (
         <li key={el.objectID}>
-          <a href={el.url}>{el.title}</a>
+          <Link to={`/articles/details/${el.objectID}`}>{el.title}</Link>
         </li>
       ))}
     </ul>

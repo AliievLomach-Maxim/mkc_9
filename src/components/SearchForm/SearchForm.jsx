@@ -3,7 +3,6 @@ import { Field, Form, Formik } from 'formik'
 const SearchForm = ({ handleSearch }) => {
   const onSubmit = (value) => {
     handleSearch(value.searchValue)
-    // actions.resetForm()
   }
   return (
     <Formik initialValues={{ searchValue: '' }} onSubmit={onSubmit}>

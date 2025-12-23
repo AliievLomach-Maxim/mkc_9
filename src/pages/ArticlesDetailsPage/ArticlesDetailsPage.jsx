@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getArticleDetails } from '../../api/articles'
-import { Link, useParams } from 'react-router'
+import { Link, useLocation, useNavigate, useParams } from 'react-router'
 
 const ArticlesDetailsPage = () => {
   const [details, setDetails] = useState(null)
-
+  const location = useLocation()
   const { id } = useParams()
 
   useEffect(() => {
@@ -17,9 +17,17 @@ const ArticlesDetailsPage = () => {
     }
   }, [id])
 
+  const navigate = useNavigate()
+
+  const handleBack = () => {
+    const isConfirm = confirm('Are you sure?')
+    if (isConfirm) navigate(location.state)
+  }
+
   return (
     <div>
-      <Link to='/articles'>Back</Link>
+      <Link to={location.state}>Back</Link>
+      <button onClick={handleBack}> {`<`} go Back</button>
       {details && (
         <>
           <h1>{details.title}</h1>

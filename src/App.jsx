@@ -1,34 +1,26 @@
-import { Link, NavLink, Route, Routes } from 'react-router'
-// import HomePage from './pages/HomePage/HomePage'
-// import ProfilePage from './pages/ProfilePage/ProfilePage'
-// import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
-// import ArticlesPage from './pages/ArticlesPage/ArticlesPage'
-// import ArticlesDetailsPage from './pages/ArticlesDetailsPage/ArticlesDetailsPage'
-// import MainLayout from './layouts/MainLayout/MainLayout'
-import { lazy, Suspense } from 'react'
-
-const ArticlesDetailsPage = lazy(() => import('./pages/ArticlesDetailsPage/ArticlesDetailsPage'))
-const ArticlesPage = lazy(() => import('./pages/ArticlesPage/ArticlesPage'))
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'))
-const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'))
-const HomePage = lazy(() => import('./pages/HomePage/HomePage'))
-const MainLayout = lazy(() => import('./layouts/MainLayout/MainLayout'))
+import { useDispatch, useSelector } from 'react-redux'
+import { counterIncrement } from './store/counterSlice'
+import { deposit } from './store/balanceSlice'
 
 const App = () => {
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.balance.value)
+
+  const handleDeposit = () => {
+    // dispatch({
+    //   type:'asd',
+    //   payload:200
+    // })
+    dispatch(deposit(200))
+  }
+
   return (
-    <>
-      <Suspense fallback={<p>LOADING...</p>}>
-        <Routes>
-          <Route path='/' element={<MainLayout />}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/profile' element={<ProfilePage />} />
-            <Route path='/articles' element={<ArticlesPage />}></Route>
-            <Route path='/articles/details/:id' element={<ArticlesDetailsPage />} />
-          </Route>
-          <Route path='/*' element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </>
+    <div>
+      <h2>Value:{state}</h2>
+      <hr />
+      <button onClick={handleDeposit}>deposit</button>
+      <button onClick={() => dispatch(counterIncrement(200))}>increment</button>
+    </div>
   )
 }
 

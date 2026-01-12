@@ -4,17 +4,19 @@ import './index.css'
 import App from './App.jsx'
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router'
+import { Provider } from 'react-redux'
+import { store } from './store/store.js'
 
 createRoot(document.getElementById('root')).render(
   // App > mount ? >unmount > web > mount
   <StrictMode>
-    <BrowserRouter>
+    <Provider store={store}>
       <App />
       <Toaster
         toastOptions={{
           duration: 1500,
         }}
       />
-    </BrowserRouter>
+    </Provider>
   </StrictMode>
 )

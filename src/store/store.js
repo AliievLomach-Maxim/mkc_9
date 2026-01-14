@@ -1,38 +1,62 @@
 import { combineReducers, createStore } from 'redux'
 import { counterReducer } from './counterSlice'
 import { balanceReducer } from './balanceSlice'
+import { configureStore } from '@reduxjs/toolkit'
+import { todoReducer } from './todoSlice'
 
-// React component (Локальний стан)
-// Створити компонент
-// Оголосити стан (use State)
-// Використати стан в компоненті (render)
-// Створити ф-ю для оновлення стану (handleSmth)
-// Викликати ф-ю оновлення стану
-// ---
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-// Redux Store
-// Створити store.
-// Оголосити стан (store obj)
-// Використати стан в компоненті (render)
-// Створити ф-ю для оновлення стану (action)
-// Викликати ф-ю оновлення стану (dispatch)
+const persistConfig = {
+  key: 'todo',
+  storage,
+}
 
-// const initialState = {
-//   balance: {
-//     value: 100,
-//     a: 1,
-//     b: 2,
-//   },
-//   counter: {
-//     value: 0,
-//     a: 1,
-//     b: 2,
-//   },
-// }
+const balancePersistConfig = {
+  key: 'balance',
+  storage,
+  // blacklist: ['secretKey'],
+  whitelist: ['publicKey'],
+}
 
-const rootReducer = combineReducers({
-  balance: balanceReducer,
+const todoPersistedReducer = persistReducer(persistConfig, todoReducer)
+const balancePersistedReducer = persistReducer(balancePersistConfig, balanceReducer)
+
+const rootReducer = {
+  balance: balancePersistedReducer,
   counter: counterReducer,
+  todo: todoPersistedReducer,
+}
+
+export const store = configureStore({
+  reducer: rootReducer,
 })
 
-export const store = createStore(rootReducer)
+export const persistor = persistStore(store)
+// import { combineReducers, createStore } from 'redux'
+// import { counterReducer } from './counterSlice'
+// import { balanceReducer } from './balanceSlice'
+// import { configureStore } from '@reduxjs/toolkit'
+// import { todoReducer } from './todoSlice'
+
+// import { persistStore, persistReducer } from 'redux-persist'
+// import storage from 'redux-persist/lib/storage'
+
+// const persistConfig = {
+//   key: 'todo',
+//   storage,
+// }
+
+// const rootReducer = combineReducers({
+//   balance: balanceReducer,
+//   counter: counterReducer,
+//   todo: todoReducer,
+// })
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+// export const store = configureStore({
+//   reducer: persistedReducer,
+// })
+
+// export const persistor = persistStore(store)

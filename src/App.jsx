@@ -1,9 +1,9 @@
-import TodoList from './components/TodoList/TodoList'
+import TaskList from './components/TaskList/TaskList'
 
 const App = () => {
   return (
     <div>
-      <TodoList />
+      <TaskList />
     </div>
   )
 }

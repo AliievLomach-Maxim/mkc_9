@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { create } from '../../store/todoSlice'
 import { useState } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
+import { getTaskThunk } from '../../store/taskSlice'
 
 const TodoList = () => {
   const [value, setValue] = useState('')
@@ -17,10 +18,16 @@ const TodoList = () => {
     dispatch(create(newTodo))
   }
 
+  const handleGet = () => {
+    dispatch(getTaskThunk())
+  }
+
   return (
     <>
       <input type='text' value={value} onChange={({ target: { value } }) => setValue(value)} />
-      <button onClick={handleCreate}>Create todo</button>
+      <button onClick={handleCreate}>Create task</button>
+      <br />
+      <button onClick={handleGet}>Get task</button>
       <ul>
         {todos.map((el) => (
           <li key={el.id}>{el.name}</li>

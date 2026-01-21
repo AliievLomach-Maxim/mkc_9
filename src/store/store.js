@@ -6,6 +6,8 @@ import { todoReducer } from './todoSlice'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { taskReducer } from './tasks/slice'
+import { filterReducer } from './filterSlice'
+import { rootReducer } from './rootSlice/slice'
 
 const persistConfig = {
   key: 'todo',
@@ -22,15 +24,17 @@ const balancePersistConfig = {
 const todoPersistedReducer = persistReducer(persistConfig, todoReducer)
 const balancePersistedReducer = persistReducer(balancePersistConfig, balanceReducer)
 
-const rootReducer = {
+const reducer = {
   balance: balancePersistedReducer,
   counter: counterReducer,
   todo: todoPersistedReducer,
   task: taskReducer,
+  filters: filterReducer,
+  root: rootReducer,
 }
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer,
 })
 
 export const persistor = persistStore(store)

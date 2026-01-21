@@ -2,12 +2,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { createTaskThunk, deleteTaskThunk, getTaskThunk } from '../../store/tasks/thunks'
 import toast from 'react-hot-toast'
+import { selectError, selectFilteredTasks, selectLoading } from '../../store/tasks/slice'
 
 const TaskList = () => {
   const [value, setValue] = useState('')
-  const tasks = useSelector((state) => state.task.task)
-  const isLoading = useSelector((state) => state.task.loading)
-  const isError = useSelector((state) => state.task.error)
+
+  // const tasks = useSelector(selectTasks)
+  const isLoading = useSelector(selectLoading)
+  const isError = useSelector(selectError)
+
+  // const filterValue = useSelector(selectFilterText)
+
+  // const filteredTasks = tasks.filter((el) =>
+  //   el.text.toLowerCase().includes(filterValue.toLowerCase()),
+  // )
+  const filteredTasks = useSelector(selectFilteredTasks)
+
+  // const { task: tasks, loading: isLoading, error: isError } = useSelector((state) => state.task)
 
   const dispatch = useDispatch()
 
@@ -58,7 +69,7 @@ const TaskList = () => {
       {isError && <h1>isError...{isError}</h1>}
       {isError && <h1>Oops some error</h1>}
       <ul>
-        {tasks.map((el) => (
+        {filteredTasks.map((el) => (
           <li key={el.id}>
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
               <p>{el.text}</p>

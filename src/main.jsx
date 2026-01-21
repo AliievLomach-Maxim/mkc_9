@@ -7,12 +7,14 @@ import { BrowserRouter } from 'react-router'
 import { Provider } from 'react-redux'
 import { persistor, store } from './store/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
+import GlobalLoading from './components/GlobalLoading/GlobalLoading.jsx'
 
 createRoot(document.getElementById('root')).render(
   // App > mount ? >unmount > web > mount
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <GlobalLoading />
         <App />
         <Toaster
           toastOptions={{
@@ -21,5 +23,5 @@ createRoot(document.getElementById('root')).render(
         />
       </PersistGate>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 )
